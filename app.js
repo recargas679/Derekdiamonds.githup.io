@@ -11,7 +11,7 @@ function abrirWhats(){ window.open('https://wa.me/' + MI_WHATSAPP + '?text=' + e
 function abrirPanelAdmin(){
   var el = document.getElementById('panel-admin'); if(!el) return;
   var pass = prompt("🔑 Contraseña de Admin:");
-  if(pass !== "derek123"){ alert("❌ Contraseña incorrecta"); return; }
+  if(pass !== "08092361240"){ alert("❌ Contraseña incorrecta"); return; }
   el.style.display = el.style.display === 'none' ? 'block' : 'none';
   if(el.style.display === 'block'){ cargarAPIEnForm(); renderCreditos(); renderPedidos(); el.scrollIntoView({ behavior: 'smooth' }); }
 }
