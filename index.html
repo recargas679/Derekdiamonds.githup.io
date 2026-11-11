@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DEREK DIAMONDS 💎 - Recargas Free Fire y Blood Strike</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="toast" class="toast"></div>
+<div class="topbar"><div class="brand"><div class="logo">💎</div><div><h1>DEREK DIAMONDS</h1><p>RECARGAS FREE FIRE</p></div></div><button class="btn-small" type="button" onclick="location.href='juegos.html'">Entrar</button></div>
+<div class="checker"></div>
+<div class="wrap">
+  <div class="card hero">
+    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80" alt="Free Fire">
+    <div class="tag"><b>FREE FIRE • BLOOD STRIKE</b><span>RECARGA EN 5-15 MIN</span></div>
+    <div class="diamond">💎</div>
+  </div>
+  <h2>💎 Bienvenido a DEREK DIAMONDS</h2>
+  <div class="card pad">
+    <p style="font-size:14px;line-height:1.6">Recarga <b>Free Fire</b> y <b>Blood Strike</b> con Derek.<br>Paga con <b>USDT, Saldo o Transferencia</b> y recibe en minutos.<br>100% confiable, +5000 recargas.</p>
+    <a href="juegos.html" class="btn" style="display:block;text-align:center;text-decoration:none">➡️ ENTRAR A RECARGAR</a>
+    <button class="btn ghost" type="button" onclick="abrirWhats()">💬 Hablar con Derek</button>
+    <p class="note">DEREK DIAMONDS 💎 • WhatsApp +5359661708 • Solo Free Fire y Blood Strike</p>
+  </div>
+  <h2>🔥 Oferta de hoy</h2>
+  <div class="card pad" style="border-color:#00e5c8;background:#072422"><b>Free Fire - 310 Diamantes</b><br><span style="color:#00e5c8;font-weight:800">3 USDT / 910 Saldo / 3,000 CUP</span><br><span class="note">Toca Entrar y elige Free Fire → Tu método → Oferta 310</span></div>
+  <div class="card pad" style="margin-top:14px;text-align:center"><button class="btn-small" type="button" onclick="abrirPanelAdmin()">⚙️ Abrir Panel Admin</button></div>
+  <div id="panel-admin" style="display:none">
+    <h2>⚙️ Panel Admin - Derek</h2>
+    <div class="card pad">
+      <h3>🔑 Activar API</h3>
+      <label for="apiProveedor">Proveedor API</label>
+      <select id="apiProveedor"><option value="smileone">Smile One</option><option value="seagm">SEAGM</option><option value="kiosgamer">Kiosgamer</option><option value="manual">Manual (WhatsApp)</option></select>
+      <label for="apiKey">API Key</label><input id="apiKey" placeholder="Pega tu API Key" autocomplete="off">
+      <label for="apiUid">API UID / Email</label><input id="apiUid" placeholder="Tu UID o email" autocomplete="off">
+      <label for="apiSaldo">Saldo API (USDT)</label><input id="apiSaldo" type="number" inputmode="numeric" placeholder="0">
+      <button class="btn" type="button" onclick="guardarAPI()">💾 Guardar API</button>
+      <p id="apiEstado" class="note"></p>
+    </div>
+    <div class="card pad" style="margin-top:14px">
+      <h3>💳 Sistema de Créditos</h3>
+      <label for="credWa">WhatsApp del cliente</label><input id="credWa" inputmode="numeric" placeholder="5359...">
+      <label for="credMonto">Créditos a dar</label><input id="credMonto" type="number" inputmode="numeric" placeholder="Ej: 1000">
+      <button class="btn" type="button" onclick="darCreditos()">➕ Dar Créditos</button>
+      <div id="listaCreditos" style="margin-top:12px"></div>
+    </div>
+    <div class="card pad" style="margin-top:14px">
+      <h3>📦 Pedidos - Base de Datos</h3>
+      <div class="pillrow"><button class="pill active" type="button" onclick="filtrarPedidos('todos',this)">Todos</button><button class="pill" type="button" onclick="filtrarPedidos('verificando',this)">Verificando</button><button class="pill" type="button" onclick="filtrarPedidos('entregado',this)">Entregado</button></div>
+      <div id="listaPedidos" style="margin-top:12px"></div>
+      <button class="btn ghost" type="button" onclick="exportarDB()">📥 Exportar Base de Datos</button>
+      <button class="btn ghost" type="button" style="background:#3a0a0a" onclick="borrarDB()">🗑️ Borrar todo</button>
+    </div>
+  </div>
+</div>
+<div class="navbar"><div class="navinner">
+<button class="active" type="button" onclick="location.href='index.html'"><span>🏠</span>Principal</button>
+<button type="button" onclick="location.href='juegos.html'"><span>🧾</span>Pedidos</button>
+<button type="button" onclick="toast('🔔 Sin avisos nuevos')"><span>🔔</span>Avisos</button>
+<button type="button" onclick="abrirWhats()"><span>👤</span>Perfil</button>
+</div></div>
+<script src="db.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

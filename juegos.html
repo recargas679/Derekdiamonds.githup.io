@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DEREK DIAMONDS 💎 - Juegos</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+.pasos{display:flex;gap:6px;margin:14px 0}
+.paso{flex:1;text-align:center;font-size:11px;padding:8px 4px;border-radius:99px;background:#0a1518;border:1px solid #1f353b;color:#8aa6ab}
+.paso.active{background:#00e5c8;color:#021414;font-weight:800}
+.paso.done{background:#072422;color:#00e5c8;border-color:#00e5c8}
+.hidden{display:none!important}
+.back{background:transparent;border:1px solid #1f353b;color:#fff;padding:9px 14px;border-radius:99px;cursor:pointer;font-family:inherit;margin-bottom:10px}
+.juegos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.juego{border:1px solid #1f353b;background:#0a1518;border-radius:18px;overflow:hidden;cursor:pointer;text-align:left;font-family:inherit;color:#fff;padding:0}
+.juego.sel{border:2px solid #00e5c8;box-shadow:0 0 0 3px rgba(0,229,200,.25)}
+.juego img{width:100%;height:110px;object-fit:cover;display:block}
+.juego .info{padding:12px}
+.juego b{font-size:15px;display:block}
+.juego span{font-size:12px;color:#9fb3b8}
+.juego .go{margin-top:8px;display:inline-block;background:#00e5c8;color:#021414;padding:6px 12px;border-radius:99px;font-size:12px;font-weight:800}
+.pagos{display:grid;grid-template-columns:1fr;gap:10px}
+.pago{border:1px solid #1f353b;background:#0a1518;border-radius:16px;padding:14px;cursor:pointer;display:flex;gap:12px;align-items:center;text-align:left;font-family:inherit;color:#fff;width:100%}
+.pago.sel{border:2px solid #00e5c8;background:#072422}
+.pago .ico{font-size:30px}
+.pago b{font-size:15px;display:block}
+.pago span{font-size:12px;color:#9fb3b8}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.offer{background:#0a1518;border:1px solid #1f353b;border-radius:14px;padding:12px;cursor:pointer;text-align:left;font-family:inherit;color:#fff;width:100%}
+.offer.sel{border:2px solid #00e5c8;background:#072422}
+.offer b{font-size:14px;display:block}
+.offer span{font-size:13px;color:#00e5c8;font-weight:700}
+.offer small{display:block;color:#9fb3b8;font-size:11px}
+</style>
+</head>
+<body>
+<div id="toast" class="toast"></div>
+<div class="topbar"><div class="brand"><div class="logo">💎</div><div><h1>DEREK DIAMONDS</h1><p>RECARGAS</p></div></div><button class="btn-small" type="button" onclick="cerrarSesion()">Salir</button></div>
+<div class="checker"></div>
+<div class="wrap">
+<div id="paso-login">
+  <h2>👋 Bienvenido a DEREK DIAMONDS</h2>
+  <div class="card pad">
+    <p class="note" style="margin-top:0">Inicia sesión para recargar. Sin registro complicado.</p>
+    <label for="loginWa">💬 Tu WhatsApp</label><input id="loginWa" inputmode="numeric" placeholder="Ej: 5359661708" autocomplete="off">
+    <label for="loginNombre">👤 Tu nombre (opcional)</label><input id="loginNombre" placeholder="Ej: Derek" autocomplete="off">
+    <button class="btn" type="button" onclick="iniciarSesion()">➡️ Entrar a Recargar</button>
+  </div>
+  <div class="card pad" style="margin-top:12px;text-align:center"><b>⭐ +5000 recargas entregadas</b><br><span class="note">Free Fire • Blood Strike • Entrega 5-15 min</span></div>
+</div>
+<div id="paso-juegos" class="hidden">
+  <div class="pasos"><div class="paso active">1 Juegos</div><div class="paso">2 Pago</div><div class="paso">3 Oferta</div><div class="paso">4 Confirmar</div></div>
+  <h2>🎮 ¿Qué juego quieres recargar, <span id="nombreUser"></span>?</h2>
+  <div class="juegos" style="margin-top:12px">
+    <button type="button" class="juego" id="btn-ff" onclick="elegirJuego('freefire')"><img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80" alt="Free Fire"><div class="info"><b>🔥 FREE FIRE</b><span>Diamantes • Pase Booya • Membresías</span><br><span class="go">Recargar →</span></div></button>
+    <button type="button" class="juego" id="btn-bs" onclick="elegirJuego('bloodstrike')"><img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&q=80" alt="Blood Strike"><div class="info"><b>🎯 BLOOD STRIKE</b><span>Oro • Pase • Paquetes</span><br><span class="go">Recargar →</span></div></button>
+  </div>
+  <div class="card pad" style="margin-top:14px"><b>💎 Tus créditos:</b> <span id="misCreditos" style="color:#00e5c8;font-weight:800">0 créditos</span></div>
+</div>
+<div id="paso-pago" class="hidden">
+  <button class="back" type="button" onclick="volverA('juegos')">← Cambiar juego</button>
+  <div class="pasos"><div class="paso done">1 Juegos ✓</div><div class="paso active">2 Pago</div><div class="paso">3 Oferta</div><div class="paso">4 Confirmar</div></div>
+  <h2>💰 Método de pago</h2><p class="note" style="margin-top:0">Juego: <b id="juegoSelTxt" style="color:#fff"></b></p>
+  <div class="pagos" style="margin-top:12px">
+    <button type="button" class="pago" id="pago-USDT" onclick="elegirPago('USDT')"><div class="ico">🪙</div><div><b>USDT - BEP20</b><span>La más rápida • Recomendada</span></div></button>
+    <button type="button" class="pago" id="pago-SALDO" onclick="elegirPago('SALDO')"><div class="ico">💰</div><div><b>SALDO MÓVIL</b><span>Recarga de saldo • Fácil</span></div></button>
+    <button type="button" class="pago" id="pago-TRANSFERENCIA" onclick="elegirPago('TRANSFERENCIA')"><div class="ico">💳</div><div><b>TRANSFERENCIA - CUP</b><span>Tarjeta CUP • BPA / Metropolitano</span></div></button>
+  </div>
+  <div class="paybox" id="payboxDetalle" style="display:none"><b>⚡ PAGA AQUÍ - DEREK DIAMONDS:</b><br><span id="payText"></span><br><button class="btn ghost" type="button" style="padding:10px" onclick="copiarPago()">📋 Copiar datos de pago</button></div>
+  <button class="btn" type="button" id="btnIrOfertas" onclick="irOfertas()" disabled>Ver Ofertas →</button>
+</div>
+<div id="paso-ofertas" class="hidden">
+  <button class="back" type="button" onclick="volverA('pago')">← Cambiar método de pago</button>
+  <div class="pasos"><div class="paso done">1 Juegos ✓</div><div class="paso done">2 Pago ✓</div><div class="paso active">3 Oferta</div><div class="paso">4 Confirmar</div></div>
+  <h2>💎 Ofertas de <span id="ofertaJuegoTxt"></span></h2><p class="note" style="margin-top:0">Pagando con: <b id="ofertaPagoTxt" style="color:#00e5c8"></b></p>
+  <div class="grid" id="listaOfertas"></div>
+  <button class="btn" type="button" id="btnIrConfirmar" onclick="irConfirmar()" disabled>Continuar →</button>
+</div>
+<div id="paso-confirmar" class="hidden">
+  <button class="back" type="button" onclick="volverA('ofertas')">← Cambiar oferta</button>
+  <div class="pasos"><div class="paso done">1 Juegos ✓</div><div class="paso done">2 Pago ✓</div><div class="paso done">3 Oferta ✓</div><div class="paso active">4 Confirmar</div></div>
+  <h2>✅ Confirma tu pedido</h2>
+  <div class="card pad" id="resumenPedido"></div>
+  <div class="field"><label for="playerId">🆔 Tu ID del juego *</label><input id="playerId" inputmode="numeric" placeholder="Ingresa tu ID del juego" autocomplete="off"></div>
+  <div class="field"><label for="compInput">📸 Comprobante de pago *</label><input type="file" id="compInput" accept="image/*"><img id="preview" class="preview" alt="Comprobante"></div>
+  <div class="total-box"><span>Total a pagar</span><b id="totalTxt">-</b></div>
+  <button class="btn" type="button" id="btnPagar" onclick="iniciarVerificacion()">🔒 Pagar y Verificar</button>
+</div>
+<div id="modalVerif" class="modal" aria-hidden="true"><div class="modal-card"><div class="loader"></div><h2 id="verifTitulo">Verificando pago...</h2><p id="verifTexto">Conectando...</p><div class="progress"><div id="verifBar"></div></div><p class="note" id="verifDetalle">No cierres esta ventana</p></div></div>
+</div>
+<div class="navbar"><div class="navinner">
+<button class="active" type="button" onclick="volverA('juegos')"><span>🏠</span>Principal</button>
+<button type="button" onclick="location.href='index.html'"><span>🧾</span>Pedidos</button>
+<button type="button" onclick="toast('🔔 Sin avisos nuevos')"><span>🔔</span>Avisos</button>
+<button type="button" onclick="abrirWhats()"><span>👤</span>Perfil</button>
+</div></div>
+<script src="db.js"></script>
+<script src="juegos.js"></script>
+</body>
+</html>
