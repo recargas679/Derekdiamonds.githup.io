@@ -1,28 +1,28 @@
-var MI_WHATSAPP = "5359661708";
+var MI_WHATSAPP = "+5358080234";
 var sesion = null;
 var juegoSel = null;
 var pagoSel = null;
 var ofertaSel = null;
 var DATOS_PAGO = {
-  "USDT": "🪙 USDT BEP20\nDirección: 0xTU_DIRECCION_BEP20_AQUI\nRed: BSC BEP20\nA nombre de: Derek",
+  "USDT": "🪙 USDT BEP20\nDirección: 0x389F24959A590de3119870230229A957Fb218914\nRed: BSC BEP20\nA nombre de: Derek",
   "SALDO": "💰 SALDO MÓVIL\nNúmero: +5358080234\nA nombre de: Derek",
-  "TRANSFERENCIA": "💳 TRANSFERENCIA CUP\nTarjeta: 9205 XXXX XXXX XXXX\nBanco: BPA / Metropolitano\nA nombre de: Derek"
+  "TRANSFERENCIA": "💳 TRANSFERENCIA CUP\nTarjeta: 9238129971775798\nBanco: BPA / Metropolitano\nA nombre de: Derek"
 };
 var OFERTAS = {
   "freefire": [
-    { nombre: "100 Diamantes", usdt: 1.5, saldo: 300, cup: 450 },
-    { nombre: "310 Diamantes", usdt: 3, saldo: 910, cup: 3000 },
-    { nombre: "520 Diamantes", usdt: 5, saldo: 1500, cup: 5000 },
-    { nombre: "1060 Diamantes", usdt: 10, saldo: 3000, cup: 10000 },
-    { nombre: "2180 Diamantes", usdt: 20, saldo: 6000, cup: 20000 },
-    { nombre: "5600 Diamantes", usdt: 50, saldo: 15000, cup: 50000 }
+    { nombre: "100+10 Diamantes", usdt: 0.78, saldo: 270, cup: 890 },
+    { nombre: "310+31 Diamantes", usdt: 2.38, saldo: 810, cup: 2660 },
+    { nombre: "520+52 Diamantes", usdt: 3.99, saldo: 1370, cup: 4505 },
+    { nombre: "1060+106 Diamantes", usdt: 7.42, saldo: 2535, cup: 8355 },
+    { nombre: "2180+219 Diamantes", usdt: 14.71, saldo: 5030, cup: 16570 },
+    { nombre: "5200+960 Diamantes", usdt: 37.14, saldo: 10800, cup: 42180 }
   ],
   "bloodstrike": [
-    { nombre: "100 Oro", usdt: 1.5, saldo: 300, cup: 450 },
-    { nombre: "310 Oro", usdt: 3, saldo: 910, cup: 3000 },
-    { nombre: "520 Oro", usdt: 5, saldo: 1500, cup: 5000 },
-    { nombre: "1060 Oro", usdt: 10, saldo: 3000, cup: 10000 },
-    { nombre: "2180 Oro", usdt: 20, saldo: 6000, cup: 20000 }
+    { nombre: "100 Oro", usdt: 1.5, saldo: 390, cup: 1000 },
+    { nombre: "310 Oro", usdt: 3, saldo: 1000, cup: 3000 },
+    { nombre: "520 Oro", usdt: 5, saldo: 1900, cup: 5000 },
+    { nombre: "1060 Oro", usdt: 10, saldo: 3780, cup: 10000 },
+    { nombre: "2180 Oro", usdt: 20, saldo: 8098, cup: 20000 }
   ]
 };
 function toast(m){ var t=document.getElementById('toast'); if(!t) return; t.textContent=m; t.style.display='block'; setTimeout(function(){ t.style.display='none'; },2200); }
